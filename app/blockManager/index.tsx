@@ -3,7 +3,7 @@ import CtaCommandLine from "../components/hero/Hero";
 
 
 interface getBlockProps {
-    __component?: string;
+    __component: string;
     index?: number;
     text?: string;
 }
@@ -11,14 +11,14 @@ interface getBlockProps {
 const getBlockComponent: React.FC<getBlockProps> = ({ __component, ...rest }, index) => {
     let Block;
 
-    switch (__component) {
-        case "sections.hero":
-            Block = Hero;
-            break;
-        case "blocks.cta-command-line":
-            Block = CtaCommandLine;
-            break;
+    const key = __component.replace('sections.', '')
+
+    const blocks = {
+        hero: Hero
     }
+
+    Block = blocks[key]
+ 
 
     return Block ? <Block key={index} {...rest} /> : null;
 };
