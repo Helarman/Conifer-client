@@ -7,6 +7,12 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ text }) => {
+    let [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = () =>{
+        setIsOpen(!isOpen)
+    }
+
     const backgroundImage = 'bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)]'
     let [backgroundColor, setBackgroundColor] = useState('bg-[#111827]');
 
@@ -53,6 +59,12 @@ const Hero: React.FC<HeroProps> = ({ text }) => {
 
         <section
             className={`
+                max-w-[2520px]
+                mx-auto
+                xl:px-20 
+                md:px-10
+                sm:px-2
+                px-4
                 relative
                 ${isBackgroundImage ? backgroundImage : backgroundColor}
                 bg-cover 
@@ -62,13 +74,15 @@ const Hero: React.FC<HeroProps> = ({ text }) => {
         >
 
             <div
-                className="absolute bg-gray-700 h-full w-full opacity-75"
+                className="absolute bg-gray-700 h-full w-full opacity-75 left-0"
             >
 
             </div>
 
-            <div className="z-10 w-3/2 bg-white absolute right-0 text-black p-5 ">
-                <form className="flex flex-col">
+            <div className="z-10 w-2/12 bg-white absolute right-0 text-black p-5 ">
+                <button onClick={toggleOpen} className="border-2 border-gray-500 p-1 w-full">Toggle</button>
+
+                <form className={`${isOpen ? 'hidden' : ''} flex flex-col`}>
                     <h1>Block customizing</h1>
 
                     <label
