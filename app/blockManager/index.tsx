@@ -10,7 +10,7 @@ interface getBlockProps {
 
 const getBlockComponent: React.FC<getBlockProps> = ({ __component, ...rest }, index) => {
     let Block;
-
+    //console.log(rest)
     const key = __component.replace('sections.', '')
 
     const blocks = {
@@ -25,7 +25,7 @@ const getBlockComponent: React.FC<getBlockProps> = ({ __component, ...rest }, in
 
 const BlockManager = ({blocks}: { blocks: any }) => {
     
-
+    
     return <div>{blocks.map(getBlockComponent)}</div>;
 };
 

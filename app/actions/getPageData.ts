@@ -20,7 +20,7 @@ interface IParams {
       }
 
 
-      const res = await axios.get(`http://127.0.0.1:1337/api/pages?filters[slug]${query}&populate=*`);
+      const res = await axios.get(`http://127.0.0.1:1337/api/pages?filters[slug]${query}&populate=deep`);
 
       const pageData = res.data.data[0];
       return { pageData };
