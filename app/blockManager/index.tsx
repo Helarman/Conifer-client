@@ -1,6 +1,6 @@
-import Hero from "../components/hero/Hero";
-import CtaCommandLine from "../components/hero/Hero";
-
+import FeaturesSection from "../components/features/Features";
+import HeroSection from "../components/hero/Hero";
+import NavbarSection from "../components/navbar/Navbar";
 
 interface getBlockProps {
     __component: string;
@@ -8,25 +8,34 @@ interface getBlockProps {
     text?: string;
 }
 
+interface BlocksArrayProps{
+    hero: any
+    features: any
+    navbar: any
+}
+
 const getBlockComponent: React.FC<getBlockProps> = ({ __component, ...rest }, index) => {
     let Block;
-    //console.log(rest)
+    
     const key = __component.replace('sections.', '')
 
-    const blocks = {
-        hero: Hero
+    const blocks: BlocksArrayProps= {
+        hero: HeroSection,
+        features: FeaturesSection,
+        navbar: NavbarSection
     }
 
-    Block = blocks[key]
- 
+    Block = blocks[key as keyof BlocksArrayProps]
 
     return Block ? <Block key={index} {...rest} /> : null;
 };
 
-const BlockManager = ({blocks}: { blocks: any }) => {
+const BlockManager = ({sections}: { sections: any }) => {
+    const index = sections.map((items: { __component: string; }) => items.__component).indexOf('sections.navbar')
+    sections.splice(0, 0, sections.splice(index, 1)[0]);
     
-    
-    return <div>{blocks.map(getBlockComponent)}</div>;
+
+    return <div>{sections.map(getBlockComponent)}</div>;
 };
 
 BlockManager.defaultProps = {

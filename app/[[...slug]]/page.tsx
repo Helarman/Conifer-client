@@ -11,7 +11,6 @@ const Page = async ({ params }: { params: IParams }) => {
   const pageData = await getPageData(params)
 
   const data = pageData.pageData?.attributes
-  
 
   if (!data) {
     return (
@@ -25,7 +24,7 @@ const Page = async ({ params }: { params: IParams }) => {
 
   return (
     <div>
-      <BlockManager blocks={data.blocks}/>
+      <BlockManager sections={data.sections}/>
       <h1>{data.title}</h1>
     </div>
   );

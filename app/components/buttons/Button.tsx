@@ -8,8 +8,9 @@ export interface ButtonProps {
     outline: false,
     small: false,
     icon: string
-    color: string
+    labelColor: string
     backgroundColor: string
+    borderColor: string
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,12 +21,19 @@ const Button: React.FC<ButtonProps> = ({
     outline,
     small,
     icon,
-    color,
+    labelColor,
     backgroundColor,
+    borderColor
 }) => {
-
+    console.log(id)
     return (
         <button
+        
+            style={{ 
+                color: labelColor, 
+                background: backgroundColor,
+                borderColor: borderColor,
+            }}
 
             className={`
                 block
@@ -37,9 +45,6 @@ const Button: React.FC<ButtonProps> = ({
                 disabled:cursor-not-allowed
                 transition
                 ${rounded ? 'rounded-full' : 'rounded-lg'}
-                ${outline ? 'bg-blue-500' : ''}
-                ${outline ? 'border-gray-500' : 'bg-blue-500'}
-                ${outline ? 'text-gray-500' : 'text-white'}
                 ${small ? 'text-sm' : 'text-md'}
                 ${small ? 'py-1' : 'py-3'}
                 ${small ? 'font-light' : 'font-semibold'}

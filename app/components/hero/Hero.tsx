@@ -36,7 +36,6 @@ const Hero: React.FC<HeroProps> = ({
     text,
     buttons
 }) => {
-    console.log(buttons)
     
     const aligns: Aligns= {
         left: `text-left justify-start`,
@@ -64,11 +63,11 @@ const Hero: React.FC<HeroProps> = ({
             `}
         >
 
-            <img
-                src={`http://localhost:1337${backgroundImage?.data.attributes.url }`}
+            {/*<img
+                src={`${isBackgroundImage ? '' : 'hidden'}`}
                 className={`${isBackgroundImage ? '' : 'hidden'} absolute h-full w-full left-0`}
                 alt=""
-            />
+            />*/}
 
             <div
                 className={`${isBackgroundImage ? '' : 'hidden'} absolute bg-gray-700 h-full w-full opacity-75 left-0`}
@@ -129,7 +128,7 @@ const Hero: React.FC<HeroProps> = ({
                         </p>
 
                         <div className={`mt-8 flex flex-wrap ${align} gap-4`}>
-                            {buttons && buttons.map(({id, label, link, rounded, small, outline, icon, color, backgroundColor}) => (
+                            {buttons && buttons.map(({id, label, link, rounded, small, outline, icon, labelColor, backgroundColor, borderColor}) => (
                             <div key={id}>
                                 <Button
                                     label={label} 
@@ -138,8 +137,9 @@ const Hero: React.FC<HeroProps> = ({
                                     small={small} 
                                     outline={outline} 
                                     icon={icon} 
-                                    color={color} 
+                                    labelColor={labelColor} 
                                     backgroundColor={backgroundColor}
+                                    borderColor={borderColor}
                                 />
                             </div>
                             ))}
