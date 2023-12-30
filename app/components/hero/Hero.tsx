@@ -51,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({
             style={{ backgroundColor: backgroundColor }}
             className={`
                 min-h-screen
-                mx-auto
+                w-full
                 xl:px-20 
                 md:px-10
                 sm:px-2
@@ -74,12 +74,13 @@ const Hero: React.FC<HeroProps> = ({
             >
             </div>
 
-            <div className="relative w-full h-screen ">
+            <div className="relative ">
 
 
                 <div
                     className={`
-                    w-full 
+                    
+                    container mx-auto px-4
                     px-4 
                     py-32 
                     h-screen 
@@ -119,7 +120,6 @@ const Hero: React.FC<HeroProps> = ({
                         <p
                             style={{ color: textColor }}
                             className={`
-                            mx-auto 
                             mt-4 
                             max-w-xl 
                             sm:text-xl/relaxed
