@@ -12,7 +12,7 @@ interface getBlockProps {
 interface BlocksArrayProps{
     hero: any
     features: any
-    //navbar: any
+    navbar: any
     team: any
 }
 
@@ -24,7 +24,7 @@ const getBlockComponent: React.FC<getBlockProps> = ({ __component, ...rest }, in
     const blocks: BlocksArrayProps= {
         hero: HeroSection,
         features: FeaturesSection,
-        //navbar: NavbarSection,
+        navbar: NavbarSection,
         team: Teamsection
     }
 

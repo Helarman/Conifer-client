@@ -61,18 +61,21 @@ const Navbar: React.FC<NavbarProps> = ({
             window.removeEventListener('scroll', listenScrollEvent);
     }, []);
 
-    const [matches, setMatches] = useState(
-        window.matchMedia("(min-width: 768px)").matches
-    )
+    const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        window
-            .matchMedia("(min-width: 768px)")
-            .addEventListener('change', e => setMatches(e.matches));
+      const handleResize = (event: any) => {
+        setWidth(event.target.innerWidth);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     }, []);
 
+
     const scrollBackground = scroll && type === 'colorOnScroll' ? backgroundColor : '';
-    const onScrollBackground = matches ? scrollBackground : backgroundColor;
+    const onScrollBackground = width > 768 ? scrollBackground : backgroundColor;
     const background = type != 'colorOnScroll' ? backgroundColor : onScrollBackground;
     
 
