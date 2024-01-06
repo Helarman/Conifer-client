@@ -25,7 +25,6 @@ const Button: React.FC<ButtonProps> = ({
     backgroundColor,
     borderColor
 }) => {
-    console.log(id)
     return (
         <button
         

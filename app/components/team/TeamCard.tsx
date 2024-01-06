@@ -215,15 +215,16 @@ export const TeamColCard: React.FC<TeamCardProps> = ({
     return (
         <div 
             className="
-                flex 
+                flex
+                flex-col 
+                md:flex-row
                 items-center 
                 justify-between
             "
         >
             <div
                 className={`
-                    ${isOdd ? 'hidden' : ''}
-                    py-12 
+                    ${isOdd ? 'md:hidden ' : ''}
                     w-full  
                     md:w-6/12
                 `}
@@ -243,7 +244,8 @@ export const TeamColCard: React.FC<TeamCardProps> = ({
 
             <div 
                 className="
-                    pt-12 
+                    pt-5    
+                    md:pt-0 
                     px-4 
                     w-full 
                     md:w-6/12 
@@ -252,7 +254,7 @@ export const TeamColCard: React.FC<TeamCardProps> = ({
             >
                 <div
                     className={`
-                        ${isOdd ? 'text-left' : 'text-right'}
+                        ${isOdd ? 'text-left' : 'md:text-right text-left'}
                         p-4 
                         pt-6 
                         md:p-0 
@@ -293,7 +295,7 @@ export const TeamColCard: React.FC<TeamCardProps> = ({
                     </p>
                     <div
                         className={`
-                            ${isOdd ? 'justify-start' : 'justify-end'}
+                            ${isOdd ? 'justify-start' : 'md:justify-end justify-start'}
                             mt-6 
                             flex   
                         `}
@@ -394,7 +396,7 @@ export const TeamColCard: React.FC<TeamCardProps> = ({
 
             <div
                 className={`
-                    ${isOdd ? '' : 'hidden'}
+                    ${isOdd ? 'hidden md:block' : 'hidden'}
                     py-12 
                     w-full  
                     md:w-6/12
@@ -441,6 +443,7 @@ export const TeamSliderCard: React.FC<TeamCardSliderProps> = ({
         <div 
             className="
                 flex 
+                
                 items-center 
                 justify-between
             "

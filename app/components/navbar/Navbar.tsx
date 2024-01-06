@@ -61,22 +61,10 @@ const Navbar: React.FC<NavbarProps> = ({
             window.removeEventListener('scroll', listenScrollEvent);
     }, []);
 
-    const [width, setWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-      const handleResize = (event: any) => {
-        setWidth(event.target.innerWidth);
-      };
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-
+  
 
     const scrollBackground = scroll && type === 'colorOnScroll' ? backgroundColor : '';
-    const onScrollBackground = width > 768 ? scrollBackground : backgroundColor;
-    const background = type != 'colorOnScroll' ? backgroundColor : onScrollBackground;
+    const background = type != 'colorOnScroll' || isMenuOpen ? backgroundColor : scrollBackground ;
     
 
     const navLinks = links.data

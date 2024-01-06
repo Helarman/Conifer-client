@@ -1,6 +1,7 @@
 import getPageData from "../actions/getPageData";
+import getPosts from "../actions/getPosts";
 import BlockManager from "../blockManager";
-import { getDataDependencies } from "../blockManager/api";
+
 
 interface IParams {
   slug?: string;
@@ -9,6 +10,7 @@ interface IParams {
 const Page = async ({ params }: { params: IParams }) => {
 
   const pageData = await getPageData(params)
+
 
   const data = pageData.pageData?.attributes
 
@@ -22,12 +24,7 @@ const Page = async ({ params }: { params: IParams }) => {
     );
   }
 
-  return (
-    <div>
-      <BlockManager sections={data.sections}/>
-      <h1>{data.title}</h1>
-    </div>
-  );
+  return <BlockManager sections={data.sections}/>;
 }
 
 export default Page;
